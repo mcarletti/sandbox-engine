@@ -97,7 +97,7 @@ namespace sb
         int _size[2]{0};
 
         //! Window clock.
-        Timer _timer;
+        utils::Timer _timer;
 
         //! Target delay to achieve desired refresh rate.
         real _min_target_delay_us{0};

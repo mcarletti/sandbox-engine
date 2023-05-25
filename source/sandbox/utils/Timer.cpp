@@ -1,7 +1,7 @@
 #include <sandbox/utils/Timer.hpp>
 #include <thread>
 
-namespace sb
+namespace sb::utils
 {
     // timer resolution: milliseconds, microseconds, nanoseconds
     using timeres = std::chrono::nanoseconds;

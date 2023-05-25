@@ -13,7 +13,7 @@ namespace sb
         _display = XOpenDisplay(nullptr);
         if(_display == nullptr)
         {
-            Logger::write("Cannot connect to X server");
+            utils::Logger::write("Cannot connect to X server");
             exit(1);
         }
 
@@ -24,14 +24,14 @@ namespace sb
 
         if(visual_info == nullptr)
         {
-            Logger::write("No appropriate visual found");
+            utils::Logger::write("No appropriate visual found");
             exit(1);
         } 
         else
         {
             ss.str("");
             ss << "Visual " << (void *)visual_info->visualid << " selected";
-            Logger::write(ss.str());
+            utils::Logger::write(ss.str());
         }
 
         XSetWindowAttributes swa;
@@ -54,16 +54,16 @@ namespace sb
         GLenum status = glewInit();
         ss.str("");
         ss << "GLEW has " << (status == GLEW_OK ? "" : "NOT ") << "been initialized";
-        Logger::write(ss.str());
+        utils::Logger::write(ss.str());
         if (status != GLEW_OK)
         {
             ss.str("");
             ss << "Error: " << glewGetErrorString(status);
-            Logger::write(ss.str());
+            utils::Logger::write(ss.str());
         }
         else
             if (GLEW_VERSION_4_3)
-                Logger::write("OpenGL 4.3 is supported");
+                utils::Logger::write("OpenGL 4.3 is supported");
 
         glEnable(GL_DEPTH_TEST);
 
@@ -83,7 +83,7 @@ namespace sb
     {
         real elapsed_time_us = static_cast<real>(_timer.getFrameTime()) * 1e-3;
         if (elapsed_time_us < _min_target_delay_us)
-            Timer::usleep(_min_target_delay_us - elapsed_time_us);
+            utils::Timer::usleep(_min_target_delay_us - elapsed_time_us);
 
         XWindowAttributes window_attributes;
         XGetWindowAttributes(_display, _window_xid, &window_attributes);

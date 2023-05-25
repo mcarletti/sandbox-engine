@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <signal.h>
 
-namespace sb
+namespace sb::utils
 {
     // the logfile path is relative
     // to the working directory

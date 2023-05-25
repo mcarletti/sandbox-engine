@@ -2,6 +2,12 @@
 cmake_minimum_required(VERSION 3.16.3 FATAL_ERROR)
 project("sandbox")
 
+# list of supported settings the user can set:
+#
+# CMAKE_BUILD_TYPE      default: Release
+# BUILD_SAMPLES         default: 0
+# DOUBLE_PRECISION      default: unset/0
+
 # set default values for undefined options
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")

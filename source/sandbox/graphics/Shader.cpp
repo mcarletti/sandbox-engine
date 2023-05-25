@@ -9,8 +9,8 @@ namespace sb
 {
     Shader* Shader::create(const std::string& vertex_shader_filename, const std::string& fragment_shader_filename)
     {
-        std::string vertex_shader_text = Loader::readTextFile(vertex_shader_filename);
-        std::string fragment_shader_text = Loader::readTextFile(fragment_shader_filename);
+        std::string vertex_shader_text = utils::Loader::readFileTXT(vertex_shader_filename);
+        std::string fragment_shader_text = utils::Loader::readFileTXT(fragment_shader_filename);
 
         const char* vertex_shader_source = vertex_shader_text.c_str();
         const char* fragment_shader_source = fragment_shader_text.c_str();
@@ -28,7 +28,7 @@ namespace sb
         {
             glGetShaderInfoLog(vertex_shader, 512, NULL, message);
             ss << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << message;
-            Logger::write(ss.str());
+            utils::Logger::write(ss.str());
             return nullptr;
         }
 
@@ -41,7 +41,7 @@ namespace sb
         {
             glGetShaderInfoLog(vertex_shader, 512, NULL, message);
             ss << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << message;
-            Logger::write(ss.str());
+            utils::Logger::write(ss.str());
             return nullptr;
         }
 
@@ -57,7 +57,7 @@ namespace sb
         {
             glGetProgramInfoLog(shader_program, 512, NULL, message);
             ss << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << message;
-            Logger::write(ss.str());
+            utils::Logger::write(ss.str());
             return nullptr;
         }
 

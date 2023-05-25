@@ -43,7 +43,7 @@ int main(int argc, char* argv[])
     shader->setInt("texture_data_1", 0);
     shader->setInt("texture_data_2", 1);
 
-    sb::Timer timer;
+    sb::utils::Timer timer;
 
     while (true)
     {

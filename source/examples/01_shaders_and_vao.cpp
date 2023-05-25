@@ -5,7 +5,8 @@ int main(int argc, char* argv[])
     sb::Window window;
     sb::Input input(&window);
 
-    window.setTitle("01_shaders_and_vao");
+    std::string title = "01_shaders_and_vao";
+    window.setTitle(title);
 
     sb::real target_fps = 30.;
     window.setRefreshRate(target_fps);
@@ -13,8 +14,9 @@ int main(int argc, char* argv[])
     bool fullscreen = false;
     bool use_flat_color = false;
 
-    std::string vs_path = "assets/shaders/color.vs";
-    std::string fs_path = "assets/shaders/color.fs";
+    std::string vs_path = sb::utils::join({"assets/shaders/examples/", title, "/vertex.glsl"});
+    std::string fs_path = sb::utils::join({"assets/shaders/examples/", title, "/fragment.glsl"});
+    std::cout << vs_path << " " << fs_path << std::endl;
     sb::Shader* shader = sb::Shader::create(vs_path, fs_path);
     assert(shader);
 

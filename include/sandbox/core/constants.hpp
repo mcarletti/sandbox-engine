@@ -1,8 +1,8 @@
 /** @file constants.hpp
  *  @brief List of common mathematical and physical constants.
  * 
- *  All values have at most 8 decimals.
- *  This is by design according to epsilon (zero threshold).
+ *  All values have at most 8 decimals, which is the zero threshold.
+ *  If needed, units are all according to the international system.
  * 
  *  @author Marco Carletti
 */

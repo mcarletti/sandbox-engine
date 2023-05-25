@@ -4,7 +4,7 @@ int main(int argc, char* argv[])
 {
     sb::Window window;
     sb::Input input(&window);
-    sb::Timer timer;
+    sb::utils::Timer timer;
 
     window.setTitle("Hello, Sandbox!");
 

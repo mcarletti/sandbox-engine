@@ -8,7 +8,7 @@
 #include <string>
 #include <mutex>
 
-namespace sb
+namespace sb::utils
 {
     class Logger
     {
@@ -30,7 +30,7 @@ namespace sb
             @brief Setup the stack tracer on a signals.
 
             This function should be called at the very beginning
-            of the program. Signals are catched from the that point.
+            of the program. Signals are catched from that point.
             Once a signal has been sent, the logger catches it
             and prints the corresponding stack trace.
 

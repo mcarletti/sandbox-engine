@@ -11,7 +11,7 @@
 #include <sandbox/core/types.hpp>
 #include <chrono>
 
-namespace sb
+namespace sb::utils
 {
     class Timer
     {
