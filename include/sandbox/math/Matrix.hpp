@@ -219,13 +219,13 @@ namespace sb
         //! Compute the inverse matrix.
         Matrix inv() const;
 
-        //! Translate the matrix by a vector.
+        //! Translate the matrix by a vector (inplace).
         void translate(const Vector& v);
 
-        //! Scale matrix.
+        //! Scale matrix (inplace).
         void scale(const real& v);
 
-        //! Scale matrix axes independently.
+        //! Scale matrix axes independently (inplace).
         void scale(const Vector& v);
 
     private:
