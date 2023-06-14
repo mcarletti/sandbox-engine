@@ -13,11 +13,11 @@
 * Support of fonts and sprites for HUD.
 * Different camera types such as first/third person and perspective/orthographic views.
 
-**Sandbox Engine** is in constant development.
+**Sandbox Engine** is in constant development.  
 Checkout the release notes to view the latest features.
 
 ## Getting started
-**Sandbox** is a pure C++ library you can include in your own projects.
+**Sandbox** is a pure C++ library you can include in your own projects.  
 The only requirements are X11, OpenGL and GLEW.
 
 The engine offers a (hopefully) easy-to-use API and you can refer to the `examples` folder to see how to use the engine in practice.
@@ -47,7 +47,33 @@ make -j4
 ```
 
 Now you are free to include the `include` folder and link the compiled libraries in your project.
-Read the cmake file to a full list of build settings.
+
+Additional options could be passed to the cmake command to customize the build process. Options could be passed as `-DNAME=VALUE` and can be combined together.  
+Read the cmake file to a full list of build settings. Here, a few examples:
+
+```bash
+# build the engine with samples
+make -j4 -DBUILD_SAMPLES=1
+
+# build the engine with debug symbols
+make -j4 -DCMAKE_BUILD_TYPE=Debug
+
+# build the engine with release symbols (default)
+make -j4 -DCMAKE_BUILD_TYPE=Release
+
+# build the engine in double precision
+make -j4 -DDOUBLE_PRECISION=1
+```
+
+### Run examples
+
+Move to the root directory and run the example you want to test. For example:
+
+```bash
+./build/Release/bin/00_create_window
+```
+
+![screenshot](assets/public/hello-sandbox.png)
 
 ## Licence
 **Sanbox Engine** by [Marco Carletti](https://www.marcocarletti.it/) is licensed under LGPL v3.
@@ -57,7 +83,4 @@ You may copy, distribute and modify the software provided that modifications are
 To view a copy of this license, check [LICENCE.txt](LICENCE.txt) file or visit [https://www.gnu.org/licenses/lgpl-3.0.html](https://www.gnu.org/licenses/lgpl-3.0.html).
 
 ## About the author
-My name is [Marco Carletti](https://www.marcocarletti.it/).
-I love computer graphics, programming and premature optimization.
-That's why I started **Sanbox Engine**.
-This is my playground, a place where I can have fun, learn and create OpenGL stuff.
+My name is [Marco Carletti](https://www.marcocarletti.it/). I love computer graphics, programming and premature optimization. That's why I started **Sanbox Engine**. This is my playground, a place where I can have fun, learn and create OpenGL stuff.
