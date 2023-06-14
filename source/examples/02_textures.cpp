@@ -12,7 +12,8 @@ int main(int argc, char* argv[])
     sb::Window window;
     sb::Input input(&window);
 
-    window.setTitle("02_textures");
+    std::string title = "02_textures";
+    window.setTitle(title);
 
     sb::real target_fps = 60.;
     window.setRefreshRate(target_fps);
@@ -20,8 +21,8 @@ int main(int argc, char* argv[])
     bool fullscreen = false;
     sb::real mix_factor = 0.5;
 
-    std::string vs_path = "assets/shaders/texture.vs";
-    std::string fs_path = "assets/shaders/texture.fs";
+    std::string vs_path = sb::utils::join({"assets/shaders/examples/", title, "/vertex.glsl"});
+    std::string fs_path = sb::utils::join({"assets/shaders/examples/", title, "/fragment.glsl"});
     sb::Shader* shader = sb::Shader::create(vs_path, fs_path);
     assert(shader);
 
@@ -35,8 +36,8 @@ int main(int argc, char* argv[])
          0.95,  0.95,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.00,  1.00,  1.00
     }, {}, 11);
 
-    sb::Texture texture("assets/textures/container.jpg", GL_RGB);
-    sb::Texture texture2("assets/textures/awesomeface.png", GL_RGBA, true);
+    sb::Texture texture(sb::utils::join({"assets/textures/examples/", title, "/container.jpg"}), GL_RGB);
+    sb::Texture texture2(sb::utils::join({"assets/textures/examples/", title, "/awesomeface.png"}), GL_RGBA, true);
 
     shader->use();
     shader->setReal("mix_factor", mix_factor);

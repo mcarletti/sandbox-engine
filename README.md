@@ -1,6 +1,6 @@
 # Sandbox Engine
 
-<center><img src="assets/public/shovel-2.png" alt="sandbox-logo" width="128"/></center>
+<img src="assets/public/shovel.png" alt="sandbox-logo" width="128"/>
 
 **Sandbox** is a open source game engine for X11 systems.
 
@@ -75,7 +75,7 @@ Move to the root directory and run the example you want to test. For example:
 ./build/Release/bin/00_create_window
 ```
 
-<center><img src="assets/public/hello-sandbox.png" alt="screenshot" width="420"/></center>
+<img src="assets/public/hello-sandbox.png" alt="screenshot" width="420"/>
 
 ### Generate documentation
 
