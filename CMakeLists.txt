@@ -12,17 +12,21 @@ project("sandbox")
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif()
+add_definitions(-D __${CMAKE_BUILD_TYPE})
 
 if(NOT BUILD_SAMPLES)
-   set(BUILD_SAMPLES 0)
+set(BUILD_SAMPLES 0)
 endif()
 
-if(DOUBLE_PRECISION)
-    add_definitions(-D __DOUBLE_PRECISION)
+if(NOT DOUBLE_PRECISION)
+set(DOUBLE_PRECISION 0)
+else()
+add_definitions(-D __DOUBLE_PRECISION)
 endif()
 
-message("Build type: " ${CMAKE_BUILD_TYPE})
-add_definitions(-D __${CMAKE_BUILD_TYPE})
+message("Build type:       " ${CMAKE_BUILD_TYPE})
+message("Build samples:    " ${BUILD_SAMPLES})
+message("Double precision: " ${DOUBLE_PRECISION})
 
 # set compilatoin flags
 set(CMAKE_CXX_STANDARD 17)

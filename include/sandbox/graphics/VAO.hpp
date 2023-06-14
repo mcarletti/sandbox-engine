@@ -32,7 +32,7 @@ namespace sb
 
             @param vertices Per-vertex data in the format {position [normal [color [texture]]]}.
             @param indices If set, enables EBO (Elements Buffer Object). When vertices is really big, EBO reduces memory usage but it is slightly slower.
-            @param stride Complete path to the fragment shader text file.
+            @param stride Number of per-vertex data. Eg. position-only: stride = 3, position-normal: stride = 6, position-normal-color: stride = 9, position-normal-color-texture: stride = 11.
         */
         VAO(const std::vector<real>& vertices, const std::vector<uint>& indices = {}, uint stride = 3);
 
@@ -50,7 +50,7 @@ namespace sb
         //! Binding index of the vertex buffer object.
         uint _vbo{0};
 
-        //! Binding index of the elements array object.
+        //! Binding index of the elements buffer object.
         uint _ebo{0};
 
         //! Number of object vertices.

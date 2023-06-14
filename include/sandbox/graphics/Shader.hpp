@@ -56,7 +56,7 @@ namespace sb
             @param name Name of the uniform variable to be set.
             @param value New value of the named uniform.
         */
-        void setReal(const std::string& name, const float& value) const;
+        void setReal(const std::string& name, const real& value) const;
 
         /*!
             @brief Set vector uniform value. If named uniform does not exist, do nothing.
