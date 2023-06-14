@@ -522,11 +522,33 @@ namespace sb
 
     void Matrix::translate(const Vector& v)
     {
+        assert(_rows == 3 || _rows == 4);
         assert(_rows == _cols);
-        assert(_rows == v.size());
-        const uint n = _rows;
+        assert((_rows - 1) == v.size());
+        const uint n = _rows - 1;
 
         for (uint i = 0; i < n; ++i)
-            _data[n * i + n - 1] += v.at(i);
+            _data[_rows * i + _cols - 1] += v.at(i);
+    }
+
+    void Matrix::scale(const real& v)
+    {
+        assert(_rows == 3 || _rows == 4);
+        assert(_rows == _cols);
+        const uint n = _rows - 1;
+
+        for (uint i = 0; i < n; ++i)
+            _data[_rows * i + i] *= v;
+    }
+
+    void Matrix::scale(const Vector& v)
+    {
+        assert(_rows == 3 || _rows == 4);
+        assert(_rows == _cols);
+        assert((_rows - 1) == v.size());
+        const uint n = _rows - 1;
+
+        for (uint i = 0; i < n; ++i)
+            _data[_rows * i + i] *= v.at(i);
     }
 }

@@ -222,6 +222,12 @@ namespace sb
         //! Translate the matrix by a vector.
         void translate(const Vector& v);
 
+        //! Scale matrix.
+        void scale(const real& v);
+
+        //! Scale matrix axes independently.
+        void scale(const Vector& v);
+
     private:
 
         //! Constructor.
