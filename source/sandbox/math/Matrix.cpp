@@ -76,7 +76,7 @@ namespace sb
         Matrix m(rows, cols);
         const uint size = std::min(rows, cols);
         for (uint i = 0; i < size; ++i)
-            m(i, i) = 1;
+            m(i, i) = 1.0;
         return m;
     }
 

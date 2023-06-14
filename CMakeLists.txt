@@ -62,4 +62,7 @@ if(BUILD_SAMPLES)
 
     add_executable(02_textures "source/examples/02_textures.cpp")
     target_link_libraries(02_textures PUBLIC ${PROJECT_NAME})
+
+    add_executable(03_transforms "source/examples/03_transforms.cpp")
+    target_link_libraries(03_transforms PUBLIC ${PROJECT_NAME})
 endif()

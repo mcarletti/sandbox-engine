@@ -138,7 +138,7 @@ namespace sb
 
         int loc = glGetUniformLocation(_shader_program, name.c_str());
 
-        switch (value.size())
+        switch (value.rows())
         {
 #ifdef __DOUBLE_PRECISION
             case 2: glUniformMatrix2dv(loc, 1, GL_FALSE, value.data()); break;
