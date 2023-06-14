@@ -75,6 +75,15 @@ Move to the root directory and run the example you want to test. For example:
 
 ![screenshot](assets/public/hello-sandbox.png)
 
+### Generate documentation
+
+The documentation is generated using [Doxygen](https://www.doxygen.nl/).  
+Simply run the following command to generate the documentation in the `doc` folder.
+
+```bash
+doxygen doxygen.conf
+```
+
 ## Licence
 **Sanbox Engine** by [Marco Carletti](https://www.marcocarletti.it/) is licensed under LGPL v3.
 
