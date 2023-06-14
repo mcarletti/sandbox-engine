@@ -94,10 +94,10 @@ int main(int argc, char* argv[])
         }
 
         sb::real value = timer.getWallTime() * 1e-9;
+        transform = sb::Matrix::identity(4, 4);
         transform(0, 0) = std::cos(value) * 0.5;
         transform(1, 1) = std::sin(value * 1.3) * 0.5;
-        transform(0, 3) = 0.5;
-        transform(1, 3) = 0.5;
+        transform.translate({std::cos(value) * 0.5f, 0.5f, 0.f, 0.f});
         shader->setMatrix("transform", transform.t());
 
         vao.draw();

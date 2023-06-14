@@ -219,6 +219,9 @@ namespace sb
         //! Compute the inverse matrix.
         Matrix inv() const;
 
+        //! Translate the matrix by a vector.
+        void translate(const Vector& v);
+
     private:
 
         //! Constructor.

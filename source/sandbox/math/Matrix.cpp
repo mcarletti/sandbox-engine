@@ -519,4 +519,14 @@ namespace sb
 
         return inverse;
     }
+
+    void Matrix::translate(const Vector& v)
+    {
+        assert(_rows == _cols);
+        assert(_rows == v.size());
+        const uint n = _rows;
+
+        for (uint i = 0; i < n; ++i)
+            _data[n * i + n - 1] += v.at(i);
+    }
 }
