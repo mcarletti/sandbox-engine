@@ -228,7 +228,7 @@ namespace sb
         //! Scale matrix axes independently (inplace).
         void scale(const Vector& v);
 
-    private:
+    protected:
 
         //! Constructor.
         Matrix() = default;

@@ -94,7 +94,7 @@ int main(int argc, char* argv[])
         }
 
         sb::real wall_time = timer.getWallTime() * 1e-9;
-        transform = sb::Matrix::identity(4, 4);
+        transform = sb::Matrix4();
         transform.scale({std::cos(wall_time) * 0.5f, std::sin(wall_time * 1.3f) * 0.5f, 1.f});
         transform.translate({std::cos(wall_time) * 0.5f, 0.5f, 0.f});
         shader->setMatrix("transform", transform.t());
