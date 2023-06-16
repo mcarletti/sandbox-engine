@@ -87,11 +87,11 @@ doxygen doxygen.conf
 ```
 
 ## Licence
-**Sanbox Engine** by [Marco Carletti](https://www.marcocarletti.it/) is licensed under LGPL v3.
+**Sandbox Engine** by [Marco Carletti](https://www.marcocarletti.it/) is licensed under LGPL v3.
 
 You may copy, distribute and modify the software provided that modifications are described and licensed for free under LGPL. Derivatives works (including modifications or anything statically linked to the library) can only be redistributed under LGPL, but applications that use the library don't have to be.
 
 To view a copy of this license, check [LICENCE.txt](LICENCE.txt) file or visit [https://www.gnu.org/licenses/lgpl-3.0.html](https://www.gnu.org/licenses/lgpl-3.0.html).
 
 ## About the author
-My name is [Marco Carletti](https://www.marcocarletti.it/). I love computer graphics, programming and premature optimization. That's why I started **Sanbox Engine**. This is my playground, a place where I can have fun, learn and create OpenGL stuff.
+My name is [Marco Carletti](https://www.marcocarletti.it/). I love computer graphics, programming and premature optimization. That's why I started **Sandbox Engine**. This is my playground, a place where I can have fun, learn and create OpenGL stuff.
