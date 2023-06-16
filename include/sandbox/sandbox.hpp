@@ -21,6 +21,8 @@
 #include <sandbox/math/Vector2.hpp>
 #include <sandbox/math/Vector3.hpp>
 #include <sandbox/math/Vector4.hpp>
+#include <sandbox/math/transform.hpp>
+#include <sandbox/math/projection.hpp>
 #include <sandbox/utils/Loader.hpp>
 #include <sandbox/utils/Logger.hpp>
 #include <sandbox/utils/Timer.hpp>

@@ -25,6 +25,18 @@ namespace sb
         _data[2] = v[2];
     }
 
+    Vector3::Vector3(const Vector& v)
+    {
+        assert(v.size() == 3);
+
+        _data = new real[3];
+        _size = 3;
+
+        _data[0] = v.at(0);
+        _data[1] = v.at(1);
+        _data[2] = v.at(2);
+    }
+
     Vector3::Vector3(const Vector3& v)
     {
         _data = new real[3];

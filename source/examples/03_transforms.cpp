@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 
     bool fullscreen = false;
     sb::real mix_factor = 0.5;
-    sb::Matrix transform = sb::Matrix::identity(4, 4);
+    sb::Matrix transform = sb::Matrix::identity(4);
 
     std::string vs_path = sb::utils::join({"assets/shaders/examples/", title, "/vertex.glsl"});
     std::string fs_path = sb::utils::join({"assets/shaders/examples/", title, "/fragment.glsl"});

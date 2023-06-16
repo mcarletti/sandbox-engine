@@ -1,3 +1,8 @@
+/** @file Matrix3.hpp
+ *  @brief 3x3 matrix class.
+ * 
+ *  @author Marco Carletti
+*/
 #pragma once
 
 #include <sandbox/math/Matrix.hpp>
@@ -21,6 +26,9 @@ namespace sb
             @param v Standard vector of real numbers. Size must be 9.
         */
         Matrix3(const std::vector<real>& v);
+
+        //! Copy constructor from parent class.
+        Matrix3(const Matrix& m);
 
         //! Copy constructor.
         Matrix3(const Matrix3& m);

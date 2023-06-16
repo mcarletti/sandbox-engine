@@ -30,6 +30,19 @@ namespace sb
         memcpy(_data, v.data(), _size * sizeof(real));
     }
 
+    Matrix2::Matrix2(const Matrix& m)
+    {
+        assert (m.size() == 4);
+
+        _size = 4;
+        _rows = 2;
+        _cols = 2;
+
+        _data = new real[_size];
+
+        memcpy(_data, m.data(), _size * sizeof(real));
+    }
+
     Matrix2::Matrix2(const Matrix2& m)
     {
         _size = 4;

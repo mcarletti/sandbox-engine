@@ -6,6 +6,7 @@
 #pragma once
 
 #include <sandbox/math/Vector.hpp>
+#include <sstream>
 
 namespace sb
 {
@@ -44,7 +45,10 @@ namespace sb
         ~Matrix();
 
         //! Constructor of the identity matrix.
-        static Matrix identity(const uint rows, const uint cols);
+        static Matrix identity(const uint size);
+
+        //! String representation of the matrix.
+        std::string toString() const;
 
         //! Get data pointer.
         const real* data() const;

@@ -71,13 +71,24 @@ namespace sb
         _cols = 0;
     }
 
-    Matrix Matrix::identity(const uint rows, const uint cols)
+    Matrix Matrix::identity(const uint size)
     {
-        Matrix m(rows, cols);
-        const uint size = std::min(rows, cols);
+        Matrix m(size, size);
         for (uint i = 0; i < size; ++i)
             m(i, i) = 1.0;
         return m;
+    }
+
+    std::string Matrix::toString() const
+    {
+        std::stringstream ss("");
+        for (uint i = 0; i < _rows; ++i)
+        {
+            for (uint j = 0; j < _cols; ++j)
+                ss << std::to_string(_data[_rows * i + j]) + " ";
+            ss << "\n";
+        }
+        return ss.str();
     }
 
     Vector Matrix::diag() const

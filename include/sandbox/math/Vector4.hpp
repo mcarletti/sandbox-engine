@@ -1,3 +1,8 @@
+/** @file Vector4.hpp
+ *  @brief 4-dimensional vector class.
+ * 
+ *  @author Marco Carletti
+*/
 #pragma once
 
 #include <sandbox/math/Vector.hpp>
@@ -22,6 +27,9 @@ namespace sb
             @param v Standard vector of real numbers. Size must be 4.
         */
         Vector4(const std::vector<real>& v);
+
+        //! Copy constructor from parent class.
+        Vector4(const Vector& v);
 
         //! Copy constructor.
         Vector4(const Vector4& v);

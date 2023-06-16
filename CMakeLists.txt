@@ -65,4 +65,7 @@ if(BUILD_SAMPLES)
 
     add_executable(03_transforms "source/examples/03_transforms.cpp")
     target_link_libraries(03_transforms PUBLIC ${PROJECT_NAME})
+
+    add_executable(04_model_view_projection "source/examples/04_model_view_projection.cpp")
+    target_link_libraries(04_model_view_projection PUBLIC ${PROJECT_NAME})
 endif()

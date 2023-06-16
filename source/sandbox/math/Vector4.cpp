@@ -27,6 +27,19 @@ namespace sb
         _data[3] = v[3];
     }
 
+    Vector4::Vector4(const Vector& v)
+    {
+        assert(v.size() == 4);
+
+        _data = new real[4];
+        _size = 4;
+
+        _data[0] = v.at(0);
+        _data[1] = v.at(1);
+        _data[2] = v.at(2);
+        _data[3] = v.at(3);
+    }
+
     Vector4::Vector4(const Vector4& v)
     {
         _data = new real[4];
