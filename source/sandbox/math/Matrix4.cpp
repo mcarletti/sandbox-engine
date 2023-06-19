@@ -21,7 +21,7 @@ namespace sb
 
     Matrix4::Matrix4(const std::vector<real>& v)
     {
-        assert (v.size() == 4);
+        assert (v.size() == 16);
 
         _size = 16;
         _rows = 4;

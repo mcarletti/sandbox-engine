@@ -1,8 +1,8 @@
 #include <sandbox/math/transform.hpp>
 #include <sandbox/math/Vector3.hpp>
+#include <sandbox/math/Matrix.hpp>
 #include <cmath>
 #include <cassert>
-#include <iostream>
 
 namespace sb
 {
@@ -71,7 +71,7 @@ namespace sb
             }
         }
 
-        return r * m;
+        return r.matmul(m);
     }
 
     Matrix scale(const Matrix& m, const real s)
