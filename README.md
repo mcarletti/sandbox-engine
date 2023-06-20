@@ -79,7 +79,7 @@ Move to the root directory and run the example you want to test. For example:
 
 ### Generate documentation
 
-The documentation is generated using [Doxygen](https://www.doxygen.nl/).  
+The documentation is generated using [Doxygen](https://www.doxygen.nl/) and [Doxygen Awesome](https://github.com/jothepro/doxygen-awesome-css) theme.  
 Simply run the following command to generate the documentation in the `doc` folder.
 
 ```bash
