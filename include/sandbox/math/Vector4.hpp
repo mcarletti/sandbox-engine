@@ -28,6 +28,13 @@ namespace sb
         */
         Vector4(const std::vector<real>& v);
 
+        /*!
+            @brief Constructor. Initializes a Vector from braced-init-list.
+
+            @param list Non empty list of real numbers.
+        */
+        Vector4(const std::initializer_list<real>& list);
+
         //! Copy constructor from parent class.
         Vector4(const Vector& v);
 

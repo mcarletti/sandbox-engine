@@ -1,4 +1,5 @@
 #include <sandbox/math/Vector3.hpp>
+#include <cstring>
 #include <cassert>
 
 namespace sb
@@ -23,6 +24,16 @@ namespace sb
         _data[0] = v[0];
         _data[1] = v[1];
         _data[2] = v[2];
+    }
+
+    Vector3::Vector3(const std::initializer_list<real>& list)
+    {
+        assert(list.size() == 3);
+
+        _data = new real[3];
+        _size = 3;
+
+        memcpy(_data, list.begin(), _size * sizeof(real));
     }
 
     Vector3::Vector3(const Vector& v)

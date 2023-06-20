@@ -49,21 +49,21 @@ namespace sb
 
         Matrix4 m;
 
-        m(0,0) =  s.x;
-        m(1,0) =  s.y;
-        m(2,0) =  s.z;
+        m(0,0) =  s.at(0);
+        m(0,1) =  s.at(1);
+        m(0,2) =  s.at(2);
 
-        m(0,1) =  u.x;
-        m(1,1) =  u.y;
-        m(2,1) =  u.z;
+        m(1,0) =  u.at(0);
+        m(1,1) =  u.at(1);
+        m(1,2) =  u.at(2);
 
-        m(0,2) = -f.x;
-        m(1,2) = -f.y;
-        m(2,2) = -f.z;
+        m(2,0) = -f.at(0);
+        m(2,1) = -f.at(1);
+        m(2,2) = -f.at(2);
 
-        m(3,0) = -s.dot(eye);
-        m(3,1) = -u.dot(eye);
-        m(3,2) =  f.dot(eye);
+        m(0,3) = -s.dot(eye);
+        m(1,3) = -u.dot(eye);
+        m(2,3) =  f.dot(eye);
 
         return m;
     }

@@ -1,4 +1,5 @@
 #include <sandbox/math/Vector4.hpp>
+#include <cstring>
 #include <cassert>
 
 namespace sb
@@ -25,6 +26,16 @@ namespace sb
         _data[1] = v[1];
         _data[2] = v[2];
         _data[3] = v[3];
+    }
+
+    Vector4::Vector4(const std::initializer_list<real>& list)
+    {
+        assert(list.size() == 4);
+
+        _data = new real[4];
+        _size = 4;
+
+        memcpy(_data, list.begin(), _size * sizeof(real));
     }
 
     Vector4::Vector4(const Vector& v)

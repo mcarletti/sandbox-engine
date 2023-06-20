@@ -16,7 +16,6 @@ int main(int argc, char* argv[])
 
     std::string vs_path = sb::utils::join({"assets/shaders/examples/", title, "/vertex.glsl"});
     std::string fs_path = sb::utils::join({"assets/shaders/examples/", title, "/fragment.glsl"});
-    std::cout << vs_path << " " << fs_path << std::endl;
     sb::Shader* shader = sb::Shader::create(vs_path, fs_path);
     assert(shader);
 

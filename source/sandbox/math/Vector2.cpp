@@ -1,4 +1,5 @@
 #include <sandbox/math/Vector2.hpp>
+#include <cstring>
 #include <cassert>
 
 namespace sb
@@ -21,6 +22,16 @@ namespace sb
 
         _data[0] = v[0];
         _data[1] = v[1];
+    }
+
+    Vector2::Vector2(const std::initializer_list<real>& list)
+    {
+        assert(list.size() == 2);
+
+        _data = new real[2];
+        _size = 2;
+
+        memcpy(_data, list.begin(), _size * sizeof(real));
     }
 
     Vector2::Vector2(const Vector& v)

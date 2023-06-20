@@ -66,7 +66,7 @@ namespace sb
                 utils::Logger::write("OpenGL 4.3 is supported");
 
         glEnable(GL_DEPTH_TEST);
-
+        glEnable(GL_CULL_FACE);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     }
@@ -96,8 +96,8 @@ namespace sb
         glViewport(0, 0, _size[0], _size[1]);
         glXSwapBuffers(_display, _window_xid);
 
-        glClearColor(0.76, 0.7, 0.5, 1.0);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClearColor(0.3, 0.6, 0.9, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     }
 
     void Window::setTitle(std::string title)
