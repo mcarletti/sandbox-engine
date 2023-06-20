@@ -3,6 +3,7 @@
 #include <sandbox/math/Matrix.hpp>
 #include <cmath>
 #include <cassert>
+#include <iostream>
 
 namespace sb
 {
@@ -48,24 +49,30 @@ namespace sb
             {
                 assert(axis.size() == 3);
 
-                const Vector3 ax(axis.normalize());
-                real x = ax.at(0);
-                real y = ax.at(1);
-                real z = ax.at(2);
+                const Vector3 nax = Vector::normalize(axis);
+                const Vector3 tmp = nax * ((real)1. - c);
 
-                r(0,0) = c + x*x * (1.0 - c);
-                r(0,1) = x*y * (1.0 - c) - z*s;
-                r(0,2) = x*z * (1.0 - c) + y*s;
+                const real ax = nax.at(0);
+                const real ay = nax.at(1);
+                const real az = nax.at(2);
 
-                r(1,0) = y*x * (1.0 - c) + z*s;
-                r(1,1) = c + y*y * (1.0 - c);
-                r(1,2) = y*z * (1.0 - c) - x*s;
+                const real tx = tmp.at(0);
+                const real ty = tmp.at(1);
+                const real tz = tmp.at(2);
 
-                r(2,0) = z*x * (1.0 - c) - y*s;
-                r(2,1) = z*y * (1.0 - c) + x*s;
-                r(2,2) = c + z*z * (1.0 - c);
+                r(0,0) = c + tx * ax;
+                r(0,1) = tx * ay + s * az;
+                r(0,2) = tx * az - s * ay;
 
-                r(3,3) = 1.0;
+                r(1,0) = ty * ax - s * az;
+                r(1,1) = c + ty * ay;
+                r(1,2) = ty * az + s * ax;
+
+                r(2,0) = tz * ax + s * ay;
+                r(2,1) = tz * ay - s * ax;
+                r(2,2) = c + tz * az;
+
+                r(3,3) = (real)1.0;
 
                 break;
             }

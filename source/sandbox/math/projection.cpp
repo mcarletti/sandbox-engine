@@ -43,9 +43,9 @@ namespace sb
 
     Matrix4 lookAt(const Vector3& eye, const Vector3& center, const Vector3& up)
     {
-        const Vector3 f = static_cast<Vector3>((center - eye).normalize());
-        const Vector3 s = static_cast<Vector3>(f.cross(up).normalize());
-        const Vector3 u = static_cast<Vector3>(s.cross(f));
+        const Vector3 f = Vector::normalize(center - eye);
+        const Vector3 s = Vector::normalize(f.cross(up));
+        const Vector3 u = s.cross(f);
 
         Matrix4 m;
 

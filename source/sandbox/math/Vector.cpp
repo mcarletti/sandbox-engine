@@ -94,11 +94,24 @@ namespace sb
         return sqrt(sum_of_squares);
     }
 
-    Vector Vector::normalize() const
+    void Vector::normalize()
     {
         assert(_size > 0);
 
-        Vector res(*this);
+        const real n = norm();
+        if (n > 0)
+            for (uint i = 0; i < _size; ++i)
+                _data[i] /= n;
+    }
+
+    Vector Vector::normalize(const Vector& v)
+    {
+        return v / v.norm();
+    }
+
+    void Vector::equalize()
+    {
+        assert(_size > 0);
 
         // get the min and max values of the array
         real min_value = SB_REAL_MAX;
@@ -114,12 +127,37 @@ namespace sb
         // shift the array by removing the minimum value
         // from each element so that the array starts from 0
         for (uint i = 0; i < _size; ++i)
-            res._data[i] -= min_value;
+            _data[i] -= min_value;
 
         // update the max value and normalize the vector
         max_value -= min_value;
         if (max_value > 0)
             for (uint i = 0; i < _size; ++i)
+                _data[i] /= max_value;
+    }
+
+    Vector Vector::equalize(const Vector& v)
+    {
+        assert(v._size > 0);
+
+        Vector res(v);
+
+        real min_value = SB_REAL_MAX;
+        real max_value = SB_REAL_MIN;
+        for (uint i = 0; i < v._size; ++i)
+        {
+            if (v._data[i] < min_value)
+                min_value = v._data[i];
+            if (v._data[i] > max_value)
+                max_value = v._data[i];
+        }
+
+        for (uint i = 0; i < v._size; ++i)
+            res._data[i] -= min_value;
+
+        max_value -= min_value;
+        if (max_value > 0)
+            for (uint i = 0; i < v._size; ++i)
                 res._data[i] /= max_value;
 
         return res;

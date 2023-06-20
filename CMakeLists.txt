@@ -29,8 +29,8 @@ message("Build samples:    " ${BUILD_SAMPLES})
 message("Double precision: " ${DOUBLE_PRECISION})
 
 # set compilatoin flags
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS                "${CMAKE_CXX_FLAGS}                -std=c++17 -Wall")
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_FLAGS                "${CMAKE_CXX_FLAGS}                -std=c++2a -Wall")
 set(CMAKE_CXX_FLAGS_DEBUG          "${CMAKE_CXX_FLAGS_DEBUG}          -O0 -g  -ggdb -rdynamic")
 set(CMAKE_CXX_FLAGS_RELEASE        "${CMAKE_CXX_FLAGS_RELEASE}        -O2 -g0      ")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} -O2     -ggdb")

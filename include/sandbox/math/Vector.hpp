@@ -85,8 +85,17 @@ namespace sb
         */
         real norm() const;
 
-        //! Return normalized vector (ie. values are scaled between 0 and 1).
-        Vector normalize() const;
+        //! Inplace vector normalization (ie. sum of values is 1).
+        void normalize();
+
+        //! Return normalized vector (ie. sum of values is 1).
+        static Vector normalize(const Vector& v);
+
+        //! Inplace vector equalization (ie. values are scaled between 0 and 1).
+        void equalize();
+
+        //! Return equalized vector (ie. values are scaled between 0 and 1).
+        static Vector equalize(const Vector& v);
 
         /*!
             @brief Compute the dot product with the input vector.
