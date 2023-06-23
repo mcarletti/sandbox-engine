@@ -5,12 +5,10 @@ layout (location = 3) in vec2 uv_coords;
 
 out vec2 texture_coords;
 
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
+uniform mat4 mvp;
 
 void main()
 {
-    gl_Position = vec4(position.xyz, 1.0) * model * view * projection;
+    gl_Position = vec4(position.xyz, 1.0) * mvp;
     texture_coords = uv_coords;
 }

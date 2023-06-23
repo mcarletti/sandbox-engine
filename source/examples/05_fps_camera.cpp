@@ -78,26 +78,7 @@ int main(int argc, char* argv[])
 
     sb::utils::Timer timer;
 
-    struct CameraFPS
-    {
-        void moveForward(sb::real dt) { position += front * dt * speed; }
-        void moveBackward(sb::real dt) { position -= front * dt * speed; }
-        void moveLeft(sb::real dt) { position -= right * dt * speed; }
-        void moveRight(sb::real dt) { position += right * dt * speed; }
-
-        // TODO
-        void roll(sb::real angle) { return; }
-        void pitch(sb::real angle) { return; }
-        void yaw(sb::real angle) { return; }
-
-        sb::Vector3 position = {0., 0., 3.};
-        sb::Vector3 front = {0., 0., -1.};
-        sb::Vector3 up = {0., 1., 0.};
-        sb::Vector3 right = {1., 0., 0.};
-        sb::real speed = 5.;
-    };
-
-    CameraFPS camera;
+    sb::Camera camera(&window, 45., 0.1, 100.);
 
     while (true)
     {
@@ -105,10 +86,10 @@ int main(int argc, char* argv[])
 
         window.update();
         input.update();
+        camera.update();
 
         if (input.isKeyPressed(sb::KEY_q) || input.isKeyDown(sb::KEY_Escape))
             break;
-
         if (input.isKeyDown(sb::KEY_W))
             camera.moveForward(delta_t);
         if (input.isKeyDown(sb::KEY_S))
@@ -117,21 +98,19 @@ int main(int argc, char* argv[])
             camera.moveLeft(delta_t);
         if (input.isKeyDown(sb::KEY_D))
             camera.moveRight(delta_t);
+        if (input.isKeyDown(sb::KEY_Shift_L))
+            camera.moveUp(delta_t);
+        if (input.isKeyDown(sb::KEY_Control_L))
+            camera.moveDown(delta_t);
 
-        sb::real W = (sb::real)window.width();
-        sb::real H = (sb::real)window.height();
-        sb::real aspect_ratio = W / H;
-
-        sb::Matrix4 projection = sb::perspective(45. * sb::DEG2RAD, aspect_ratio, 0.1, 100.);
-        shader->setMatrix("projection", projection);
-
-        sb::Matrix4 view;
-        view = sb::lookAt(camera.position, camera.position + camera.front, camera.up);
-        shader->setMatrix("view", view);
+        sb::Matrix4 projection = camera.projection();
+        sb::Matrix4 view = camera.view();
 
         sb::Matrix4 model;
         model = sb::rotate(model, timer.getWallTime() * 1e-9, {.5, 1., 0.});
-        shader->setMatrix("model", model);
+
+        sb::Matrix4 mvp = projection.matmul(view.matmul(model));
+        shader->setMatrix("mvp", mvp);
 
         vao.draw();
     }

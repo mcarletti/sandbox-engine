@@ -13,6 +13,7 @@
 #include <sandbox/core/Window.hpp>
 #include <sandbox/graphics/Shader.hpp>
 #include <sandbox/graphics/VAO.hpp>
+#include <sandbox/graphics/Camera.hpp>
 #include <sandbox/math/Matrix.hpp>
 #include <sandbox/math/Matrix2.hpp>
 #include <sandbox/math/Matrix3.hpp>
