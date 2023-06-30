@@ -14,16 +14,7 @@
 #include <sandbox/graphics/Shader.hpp>
 #include <sandbox/graphics/VAO.hpp>
 #include <sandbox/graphics/Camera.hpp>
-#include <sandbox/math/Matrix.hpp>
-#include <sandbox/math/Matrix2.hpp>
-#include <sandbox/math/Matrix3.hpp>
-#include <sandbox/math/Matrix4.hpp>
-#include <sandbox/math/Vector.hpp>
-#include <sandbox/math/Vector2.hpp>
-#include <sandbox/math/Vector3.hpp>
-#include <sandbox/math/Vector4.hpp>
-#include <sandbox/math/transform.hpp>
-#include <sandbox/math/projection.hpp>
+#include <sandbox/math/math.hpp>
 #include <sandbox/utils/Loader.hpp>
 #include <sandbox/utils/Logger.hpp>
 #include <sandbox/utils/Timer.hpp>

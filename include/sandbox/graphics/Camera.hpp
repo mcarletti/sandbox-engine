@@ -48,6 +48,12 @@ namespace sb
             //! Return camera view matrix.
             const sb::Matrix4& view() const;
 
+            //! Return camera speed.
+            real speed() const;
+
+            //! Set camera speed.
+            void setSpeed(real speed);
+
             //! Set viewport.
             void setViewport(uint x, uint y, uint width, uint height);
 

@@ -65,6 +65,17 @@ namespace sb
         return _view;
     }
 
+    real Camera::speed() const
+    {
+        return _speed;
+    }
+
+    void Camera::setSpeed(real speed)
+    {
+        assert(speed >= 0);
+        _speed = speed;
+    }
+
     void Camera::setViewport(uint x, uint y, uint width, uint height)
     {
         assert(width > 0 && height > 0);
@@ -80,31 +91,31 @@ namespace sb
 
     void Camera::moveForward(real dt)
     {
-        _position += _front * dt;
+        _position += _front * _speed * dt;
     }
 
     void Camera::moveBackward(real dt)
     {
-        _position -= _front * dt;
+        _position -= _front * _speed * dt;
     }
 
     void Camera::moveLeft(real dt)
     {
-        _position -= _front.cross(_up) * dt;
+        _position -= _front.cross(_up) * _speed * dt;
     }
 
     void Camera::moveRight(real dt)
     {
-        _position += _front.cross(_up) * dt;
+        _position += _front.cross(_up) * _speed * dt;
     }
 
     void Camera::moveUp(real dt)
     {
-        _position += _up * dt;
+        _position += _up * _speed * dt;
     }
 
     void Camera::moveDown(real dt)
     {
-        _position -= _up * dt;
+        _position -= _up * _speed * dt;
     }
 }
