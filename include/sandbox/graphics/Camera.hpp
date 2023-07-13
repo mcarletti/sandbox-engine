@@ -34,28 +34,37 @@ namespace sb
             void update();
 
             //! Return camera position.
-            const sb::Vector3& position() const;
+            const Vector3& position() const;
 
             //! Return camera front vector.
-            const sb::Vector3& front() const;
+            const Vector3& front() const;
 
             //! Return camera up vector.
-            const sb::Vector3& up() const;
+            const Vector3& up() const;
 
             //! Return camera projection matrix.
-            const sb::Matrix4& projection() const;
+            const Matrix4& projection() const;
 
             //! Return camera view matrix.
-            const sb::Matrix4& view() const;
+            const Matrix4& view() const;
 
-            //! Return camera speed.
+            //! Return camera translation speed.
             real speed() const;
 
-            //! Set camera speed.
+            //! Return camera rotation speed.
+            real angularSpeed() const;
+
+            //! Set camera translation speed.
             void setSpeed(real speed);
+
+            //! Set camera rotation speed.
+            void setAngularSpeed(real speed);
 
             //! Set viewport.
             void setViewport(uint x, uint y, uint width, uint height);
+
+            //! Move along the given direction.
+            void move(real dt, const Vector3& direction);
 
             //! Move along the front vector.
             void moveForward(real dt);
@@ -75,37 +84,55 @@ namespace sb
             //! Move along the down vector.
             void moveDown(real dt);
 
+            //! Rotate camera view by an offset in the image plane.
+            void rotateView(real dt, real dx, real dy);
+
+            //! Rotate camera along the front vector.
+            void roll(real dt);
+
+            //! Rotate camera along the right vector.
+            void pitch(real dt);
+
+            //! Rotate camera along the up vector.
+            void yaw(real dt);
+
         private:
 
             //! Pointer to a valid Window object.
-            sb::Window* _window{nullptr};
+            Window* _window{nullptr};
 
             //! Camera position.
-            sb::Vector3 _position{0., 0., 3.};
+            Vector3 _position{0., 0., 3.};
 
             //! Camera front vector.
-            sb::Vector3 _front{0., 0., -1.};
+            Vector3 _front{0., 0., -1.};
 
             //! Camera up vector.
-            sb::Vector3 _up{0., 1., 0.};
+            Vector3 _up{0., 1., 0.};
 
-            //! Camera world up vector.
-            sb::real _speed{5.};
+            //! World up vector.
+            Vector3 _world_up{0., 1., 0.};
+
+            //! Translation speed in units per second.
+            real _speed{5.};
+
+            //! Rotation speed in radians.
+            real _angular_speed{3.};
 
             //! Projection matrix field of view.
-            sb::real _fovy{45.};
+            real _fovy{45.};
 
             //! Projection matrix near plane.
-            sb::real _near{0.1};
+            real _near{0.1};
 
             //! Projection matrix far plane.
-            sb::real _far{100.};
+            real _far{100.};
 
             //! Projection matrix.
-            sb::Matrix4 _projection;
+            Matrix4 _projection;
 
             //! View matrix.
-            sb::Matrix4 _view;
+            Matrix4 _view;
 
             //! Viewport (x, y, width, height).
             uint _viewport[4]{0, 0, 0, 0};

@@ -43,11 +43,5 @@ namespace sb
 
         //! Destructor.
         ~Vector3();
-
-        // aliases
-
-        real& x{_data[0]};
-        real& y{_data[1]};
-        real& z{_data[2]};
     };
 }

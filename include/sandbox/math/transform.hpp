@@ -23,9 +23,18 @@ namespace sb
 
         @param m The matrix to rotate.
         @param angle The angle in radians.
-        @param v The rotation axis (ignored for 2D rotation).
+        @param axis The rotation axis (ignored for 2D rotation).
     */
     Matrix rotate(const Matrix& m, const real angle, const Vector& axis);
+
+    /*!
+        @brief Rotate a 2D or 3D vector by an angle around an axis.
+
+        @param v The vector to rotate.
+        @param angle The angle in radians.
+        @param axis The rotation axis (ignored for 2D rotation).
+    */
+    Vector rotate(const Vector& v, const real angle, const Vector& axis);
 
     /*!
         @brief Scale a matrix by a scalar.

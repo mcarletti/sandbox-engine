@@ -100,6 +100,14 @@ namespace sb
         */
         void mousePosition(int& x, int& y, bool screen_space = false);
 
+        /*!
+            @brief Set the mouse position.
+
+            @param x Horizontal mouse coordinate in pixels.
+            @param y Vertical mouse coordinate in pixels.
+        */
+        void setMousePosition(int x, int y);
+
     private:
 
         //! Pointer to the linked window object.

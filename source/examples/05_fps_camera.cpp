@@ -17,6 +17,7 @@ int main(int argc, char* argv[])
 
     sb::Window window;
     Input input(&window);
+    input.setMousePosition(1024, 1024);
 
     string title = "05_fps_camera";
     real target_fps = 60.;
@@ -30,11 +31,11 @@ int main(int argc, char* argv[])
     assert(shader);
     shader->use();
 
-    Texture texture(utils::join({"assets/textures/examples/", title, "/container.jpg"}), GL_RGB);
+    Texture texture1(utils::join({"assets/textures/examples/", title, "/container.jpg"}), GL_RGB);
+    Texture texture2(utils::join({"assets/textures/examples/", title, "/wood.png"}), GL_RGB);
     shader->setInt("texture_data", 0);
-    texture.bind(0);
 
-    VAO vao({
+    VAO cube({
         // position (xyz)     // normal (xyz)      // color (rgb)       // texture (st)
          0.5f,  0.5f, -0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.0f, 1.0f,
          0.5f, -0.5f, -0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.0f, 0.0f,
@@ -79,6 +80,16 @@ int main(int argc, char* argv[])
          0.5f,  0.5f,  0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.0f, 0.0f,
     }, {}, 11);
 
+    VAO plane({
+        // position (xyz)     // normal (xyz)      // color (rgb)       // texture (st)
+        -0.5f,  0.0f, -0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.0f, 1.0f,
+        -0.5f,  0.0f,  0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.0f, 0.0f,
+         0.5f,  0.0f,  0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.0f, 0.0f,
+        -0.5f,  0.0f, -0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  1.0f, 1.0f,
+         0.5f,  0.0f,  0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.0f, 0.0f,
+         0.5f,  0.0f, -0.5f,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0.0f, 1.0f,
+    }, {}, 11);
+
     utils::Timer timer;
 
     Camera camera(&window, 45., 0.1, 100.);
@@ -111,16 +122,49 @@ int main(int argc, char* argv[])
         if (input.isKeyDown(KEY_Control_L))
             camera.moveDown(delta_t);
 
+        int mouse_x = 0, mouse_y = 0;
+        input.mousePosition(mouse_x, mouse_y);
+        input.setMousePosition(1024, 1024);
+        real dx = (mouse_x - 1024);
+        real dy = (mouse_y - 1024);
+
+        if (dx != 0 || dy != 0)
+            camera.rotateView(delta_t, dx, dy);
+
+        if (input.isKeyDown(KEY_U))
+            camera.roll(delta_t);
+        if (input.isKeyDown(KEY_O))
+            camera.roll(-delta_t);
+        if (input.isKeyDown(KEY_I))
+            camera.pitch(-delta_t);
+        if (input.isKeyDown(KEY_K))
+            camera.pitch(delta_t);
+        if (input.isKeyDown(KEY_J))
+            camera.yaw(-delta_t);
+        if (input.isKeyDown(KEY_L))
+            camera.yaw(delta_t);
+
         mat4 projection = camera.projection();
         mat4 view = camera.view();
+        mat4 projection_view_mtx = projection.matmul(view);
 
-        mat4 model;
-        model = rotate(model, timer.getWallTime() * 1e-9, {.5, 1., 0.});
+        {
+            mat4 model;
+            model = rotate(model, timer.getWallTime() * 1e-9, {.5, 1., 0.});
+            model.translate({0., 2., 0.});
+            shader->setMatrix("mvp", projection_view_mtx.matmul(model));
 
-        mat4 mvp = projection.matmul(view.matmul(model));
-        shader->setMatrix("mvp", mvp);
+            texture1.bind(0);
+            cube.draw();
+        }
+        {
+            mat4 model;
+            model.scale(20.);
+            shader->setMatrix("mvp", projection_view_mtx.matmul(model));
 
-        vao.draw();
+            texture2.bind(0);
+            plane.draw();
+        }
     }
 
     delete shader;

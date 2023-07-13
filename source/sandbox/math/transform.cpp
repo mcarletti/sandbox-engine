@@ -81,6 +81,24 @@ namespace sb
         return r.matmul(m);
     }
 
+    Vector rotate(const Vector& v, const real angle, const Vector& axis)
+    {
+        const uint size = v.size();
+        assert(size == 2 || size == 3);
+
+        Matrix m = Matrix::identity(size + 1);
+        for (uint i = 0; i < size; ++i)
+            m(i, size) = v.at(i);
+
+        m = rotate(m, angle, axis);
+        Vector hres = m.col(size);
+        Vector res(size);
+        for (uint i = 0; i < size; ++i)
+            res[i] = hres.at(i);
+
+        return res;
+    }
+
     Matrix scale(const Matrix& m, const real s)
     {
         assert(m.rows() == m.cols());

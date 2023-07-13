@@ -101,3 +101,8 @@ void Input::mousePosition(int& x, int& y, bool screen_space)
         y = _mouse_pos_win[1];
     }
 }
+
+void Input::setMousePosition(int x, int y)
+{
+    XWarpPointer(_window->display(), None, _window->xid(), 0, 0, 0, 0, x, y);
+}
