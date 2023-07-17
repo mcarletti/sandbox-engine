@@ -16,10 +16,7 @@ int main(int argc, char* argv[])
     sb::Input input(&window);
 
     std::string title = "04_model_view_projection";
-    sb::real target_fps = 60.;
-
     window.setTitle(title);
-    window.setRefreshRate(target_fps);
 
     std::string vs_path = sb::utils::join({"assets/shaders/examples/", title, "/vertex.glsl"});
     std::string fs_path = sb::utils::join({"assets/shaders/examples/", title, "/fragment.glsl"});

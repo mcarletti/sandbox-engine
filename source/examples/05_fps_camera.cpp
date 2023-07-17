@@ -11,19 +11,36 @@ using namespace sb;
 #define PRINT(msg) {}
 #endif
 
+void waitToRefresh(real target_fps, real& elapsed_time_s)
+{
+    if (abs(target_fps) < EPS)
+        return;
+
+    real min_target_delay_us = (1000. / target_fps) * 1e3;
+    real elapsed_time_us = elapsed_time_s * 1e6;
+
+    if (elapsed_time_us < min_target_delay_us)
+    {
+        utils::Timer::usleep(min_target_delay_us - elapsed_time_us);
+        elapsed_time_s = min_target_delay_us * 1e-6;
+    }
+}
+
 int main(int argc, char* argv[])
 {
     utils::Logger::setSignalHandler(11);
 
     sb::Window window;
     Input input(&window);
-    input.setMousePosition(1024, 1024);
+
+    int screen_width, screen_height;
+    window.screenSize(screen_width, screen_height);
+    input.setMousePosition(screen_width / 2, screen_height / 2);
 
     string title = "05_fps_camera";
-    real target_fps = 60.;
+    real target_fps = 0.;
 
     window.setTitle(title);
-    window.setRefreshRate(target_fps);
 
     string vs_path = utils::join({"assets/shaders/examples/", title, "/vertex.glsl"});
     string fs_path = utils::join({"assets/shaders/examples/", title, "/fragment.glsl"});
@@ -99,6 +116,8 @@ int main(int argc, char* argv[])
     {
         real delta_t = timer.getFrameTime() * 1e-9;
 
+        waitToRefresh(target_fps, delta_t);
+        
         if (!window.focused())
             continue;
 
@@ -127,9 +146,9 @@ int main(int argc, char* argv[])
 
         int mouse_x = 0, mouse_y = 0;
         input.mousePosition(mouse_x, mouse_y);
-        input.setMousePosition(1024, 1024);
-        real dx = (mouse_x - 1024);
-        real dy = (mouse_y - 1024);
+        input.setMousePosition(screen_width / 2, screen_height / 2);
+        real dx = (mouse_x - screen_width / 2);
+        real dy = (mouse_y - screen_height / 2);
 
         if (dx != 0 || dy != 0)
             camera.rotateView(delta_t, dx, dy);

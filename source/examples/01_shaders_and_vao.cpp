@@ -8,9 +8,6 @@ int main(int argc, char* argv[])
     std::string title = "01_shaders_and_vao";
     window.setTitle(title);
 
-    sb::real target_fps = 30.;
-    window.setRefreshRate(target_fps);
-
     bool fullscreen = false;
     bool use_flat_color = false;
 

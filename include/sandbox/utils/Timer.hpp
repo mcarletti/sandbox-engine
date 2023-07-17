@@ -46,12 +46,12 @@ namespace sb::utils
     private:
 
         //! Retrieve current system clock.
-        static std::chrono::system_clock::time_point getTime();
+        static std::chrono::steady_clock::time_point getTime();
 
         //! Reference time (t0).
-        std::chrono::system_clock::time_point _tstart;
+        std::chrono::steady_clock::time_point _tstart;
 
         //! Reference time used to compute the 'getFrameTime' delta.
-        std::chrono::system_clock::time_point _tframe;
+        std::chrono::steady_clock::time_point _tframe;
     };
 }

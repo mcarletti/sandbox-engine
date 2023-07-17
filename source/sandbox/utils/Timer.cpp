@@ -24,7 +24,7 @@ namespace sb::utils
 
     ulong Timer::getFrameTime()
     {
-        std::chrono::system_clock::time_point now = getTime();
+        std::chrono::steady_clock::time_point now = getTime();
         ulong t = std::chrono::duration_cast<timeres>(now - _tframe).count();
         _tframe = now;
         return t;
@@ -32,7 +32,7 @@ namespace sb::utils
 
     ulong Timer::getSystemTime()
     {
-        std::chrono::system_clock::time_point now = getTime();
+        std::chrono::steady_clock::time_point now = getTime();
         ulong t = std::chrono::duration_cast<timeres>(now.time_since_epoch()).count();
         return t;
     }
@@ -47,9 +47,8 @@ namespace sb::utils
         std::this_thread::sleep_for<int64_t, std::micro>(std::chrono::microseconds(us));
     }
 
-    std::chrono::system_clock::time_point Timer::getTime()
+    std::chrono::steady_clock::time_point Timer::getTime()
     {
-        //return std::chrono::high_resolution_clock::now();
-        return std::chrono::system_clock::now();
+        return std::chrono::steady_clock::now();
     }
 }

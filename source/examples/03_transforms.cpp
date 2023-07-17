@@ -16,9 +16,6 @@ int main(int argc, char* argv[])
     std::string title = "03_transforms";
     window.setTitle(title);
 
-    sb::real target_fps = 60.;
-    window.setRefreshRate(target_fps);
-
     bool fullscreen = false;
     sb::real mix_factor = 0.5;
     sb::Matrix transform = sb::Matrix::identity(4);

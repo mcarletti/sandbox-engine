@@ -15,9 +15,6 @@ int main(int argc, char* argv[])
     std::string title = "02_textures";
     window.setTitle(title);
 
-    sb::real target_fps = 60.;
-    window.setRefreshRate(target_fps);
-
     bool fullscreen = false;
     sb::real mix_factor = 0.5;
 

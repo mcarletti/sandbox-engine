@@ -81,10 +81,6 @@ namespace sb
 
     void Window::update()
     {
-        real elapsed_time_us = static_cast<real>(_timer.getFrameTime()) * 1e-3;
-        if (elapsed_time_us < _min_target_delay_us)
-            utils::Timer::usleep(_min_target_delay_us - elapsed_time_us);
-
         XWindowAttributes window_attributes;
         XGetWindowAttributes(_display, _window_xid, &window_attributes);
 
@@ -93,11 +89,12 @@ namespace sb
         _size[0] = window_attributes.width;
         _size[1] = window_attributes.height;
 
-        glViewport(0, 0, _size[0], _size[1]);
         glXSwapBuffers(_display, _window_xid);
 
-        glClearColor(0.3, 0.6, 0.9, 1.0);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+        glClearColor(0.3, 0.6, 0.9, 1.0);
+
+        glViewport(0, 0, _size[0], _size[1]);
     }
 
     void Window::setTitle(std::string title)
@@ -127,11 +124,6 @@ namespace sb
         XFlush(_display);
     }
 
-    void Window::setRefreshRate(real fps)
-    {
-        _min_target_delay_us = (1000. / fps) * 1e3;
-    }
-
     Display* Window::display() { return _display; }
     XID Window::xid() const { return _window_xid; }
 
@@ -145,6 +137,13 @@ namespace sb
     {
         w = _size[0];
         h = _size[1];
+    }
+
+    void Window::screenSize(int&w, int& h) const
+    {
+        XID ds = DefaultScreen(_display);
+        w = DisplayWidth(_display, ds);
+        h = DisplayHeight(_display, ds);
     }
 
     bool Window::focused() const

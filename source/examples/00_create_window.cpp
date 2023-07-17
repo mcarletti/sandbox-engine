@@ -8,9 +8,6 @@ int main(int argc, char* argv[])
 
     window.setTitle("Hello, Sandbox!");
 
-    sb::real target_fps = 30.;
-    window.setRefreshRate(target_fps);
-
     bool fullscreen = false;
     sb::real angle = 0.;
 
@@ -29,20 +26,6 @@ int main(int argc, char* argv[])
         {
             fullscreen = !fullscreen;
             window.setFullscreen(fullscreen);
-        }
-
-        if (input.isKeyPressed(sb::KEY_plus) || input.isKeyPressed(sb::KEY_KP_Add))
-        {
-            target_fps += 1.;
-            std::cout << "target_fps: " << target_fps << std::endl;
-            window.setRefreshRate(target_fps);
-        }
-
-        if (input.isKeyPressed(sb::KEY_minus) || input.isKeyPressed(sb::KEY_KP_Subtract))
-        {
-            target_fps = std::max(target_fps - 1., 1.);
-            std::cout << "target_fps: " << target_fps << std::endl;
-            window.setRefreshRate(target_fps);
         }
 
         glLoadIdentity();

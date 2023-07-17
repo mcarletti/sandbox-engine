@@ -77,7 +77,10 @@ namespace sb
         //! Get window dimensions.
         void size(int& w, int& h) const;
 
-        //! Get focused state of the window.
+        //! Get default screen dimensions.
+        void screenSize(int&w, int& h) const;
+
+        //! Get wether the window is focused or not.
         bool focused() const;
 
     private:
@@ -98,11 +101,5 @@ namespace sb
 
         //! Window resolution (in pixels).
         int _size[2]{0};
-
-        //! Window clock.
-        utils::Timer _timer;
-
-        //! Target delay to achieve desired refresh rate.
-        real _min_target_delay_us{0};
     };
 }
