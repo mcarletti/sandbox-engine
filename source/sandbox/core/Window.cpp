@@ -146,4 +146,12 @@ namespace sb
         w = _size[0];
         h = _size[1];
     }
+
+    bool Window::focused() const
+    {
+        int revert_to_return;
+        XID focused_window_xid;
+        XGetInputFocus(_display, &focused_window_xid, &revert_to_return);
+        return focused_window_xid == _window_xid;
+    }
 }

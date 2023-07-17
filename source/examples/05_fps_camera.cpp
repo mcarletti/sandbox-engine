@@ -99,6 +99,9 @@ int main(int argc, char* argv[])
     {
         real delta_t = timer.getFrameTime() * 1e-9;
 
+        if (!window.focused())
+            continue;
+
         window.update();
         input.update();
         camera.update();

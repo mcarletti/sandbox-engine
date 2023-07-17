@@ -77,6 +77,9 @@ namespace sb
         //! Get window dimensions.
         void size(int& w, int& h) const;
 
+        //! Get focused state of the window.
+        bool focused() const;
+
     private:
         //! Pointer to X11 display object.
         Display* _display{nullptr};
