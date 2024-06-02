@@ -55,16 +55,16 @@ Read the cmake file to a full list of build settings. Here, a few examples:
 
 ```bash
 # build the engine with samples
-make -j4 -DBUILD_SAMPLES=1
+cmake ../.. -DBUILD_SAMPLES=1
 
 # build the engine with debug symbols
-make -j4 -DCMAKE_BUILD_TYPE=Debug
+cmake ../.. -DCMAKE_BUILD_TYPE=Debug
 
 # build the engine with release symbols (default)
-make -j4 -DCMAKE_BUILD_TYPE=Release
+cmake ../.. -DCMAKE_BUILD_TYPE=Release
 
 # build the engine in double precision
-make -j4 -DDOUBLE_PRECISION=1
+cmake ../.. -DDOUBLE_PRECISION=1
 ```
 
 ### Run examples
