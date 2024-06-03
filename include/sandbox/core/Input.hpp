@@ -101,7 +101,7 @@ namespace sb
         void mousePosition(int& x, int& y, bool screen_space = false);
 
         /*!
-            @brief Set the mouse position.
+            @brief Set the mouse position in window reference system.
 
             @param x Horizontal mouse coordinate in pixels.
             @param y Vertical mouse coordinate in pixels.

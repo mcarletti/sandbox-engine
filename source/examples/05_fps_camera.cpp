@@ -33,9 +33,9 @@ int main(int argc, char* argv[])
     sb::Window window;
     Input input(&window);
 
-    int screen_width, screen_height;
-    window.screenSize(screen_width, screen_height);
-    input.setMousePosition(screen_width / 2, screen_height / 2);
+    int win_width, win_height;
+    window.size(win_width, win_height);
+    input.setMousePosition(win_width / 2, win_height / 2);
 
     string title = "05_fps_camera";
     real target_fps = 0.;
@@ -146,9 +146,9 @@ int main(int argc, char* argv[])
 
         int mouse_x = 0, mouse_y = 0;
         input.mousePosition(mouse_x, mouse_y);
-        input.setMousePosition(screen_width / 2, screen_height / 2);
-        real dx = (mouse_x - screen_width / 2);
-        real dy = (mouse_y - screen_height / 2);
+        input.setMousePosition(win_width / 2, win_height / 2);
+        real dx = (mouse_x - win_width / 2);
+        real dy = (mouse_y - win_height / 2);
 
         if (dx != 0 || dy != 0)
             camera.rotateView(delta_t, dx, dy);
