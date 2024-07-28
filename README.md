@@ -11,9 +11,7 @@
 * Assets loader and filesystem utilities to read and write data from/to disk.
 * High resolution timer, thread safe logger and other debugging tools.
 * Math library for vector and matrix algebra.
-* Support both 2D and 3D rendering through GLSL shaders (eg. VAO/VBO/EBO, textures, normal maps, skybox, etc).
-* Support of fonts and sprites for HUD.
-* Different camera types such as first/third person and perspective/orthographic views.
+* Support both 2D and 3D rendering through GLSL shaders.
 
 **Sandbox Engine** is in constant development.  
 Checkout the release notes to view the latest features.
